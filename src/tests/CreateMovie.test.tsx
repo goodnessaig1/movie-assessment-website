@@ -15,7 +15,7 @@ vi.mock("react-router", async () => {
   };
 });
 
-const mockCreateMovie = vi.fn((data, { onSuccess }) => {
+const mockCreateMovie = vi.fn(({ onSuccess }) => {
   onSuccess();
 });
 
