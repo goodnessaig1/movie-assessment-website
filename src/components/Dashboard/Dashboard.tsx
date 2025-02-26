@@ -114,14 +114,16 @@ const Dashboard = () => {
                     </div>
                   </div>
                 ))}
-              <div className="flex items-center justify-center pt-4">
-                <Link
-                  to={"/movies"}
-                  className="bg-black hover:bg-gray-600 rounded-xl transition duration-300 text-white px-6 py-2"
-                >
-                  View all
-                </Link>
-              </div>
+              {movies && movies.length > 8 && (
+                <div className="flex items-center justify-center pt-4">
+                  <Link
+                    to={"/movies"}
+                    className="bg-black hover:bg-gray-600 rounded-xl transition duration-300 text-white px-6 py-2"
+                  >
+                    View all
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         )}
