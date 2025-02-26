@@ -29,7 +29,7 @@ const MovieCard: React.FC<Props> = ({
       <div className="w-full">
         <img
           src={movie.poster}
-          className="rounded-lg h-[230px] w-full"
+          className="rounded-lg object-cover h-[230px] w-full"
           alt=""
         />
       </div>
