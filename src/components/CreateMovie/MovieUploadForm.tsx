@@ -63,7 +63,7 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
       : Yup.mixed().required("Poster image is required"),
     trailerLink: Yup.string()
       .url("Enter a valid URL")
-      .required("Trailer link is required"),
+      .required("Movie link is required"),
   });
 
   const initialValues: MovieFormValues = {
@@ -256,13 +256,14 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
 
             <div className="flex flex-col gap-1.5">
               <label htmlFor="trailerLink" className="text-sm md:text-base">
-                Trailer Link:
+                Movie Link:
               </label>
               <Field
                 type="text"
                 id="trailerLink"
                 className="border rounded-lg border-gray-200 h-10 px-2 outline-none"
                 name="trailerLink"
+                placeholder="eg: https://youtu.be/nv....."
               />
               <ErrorMessage
                 name="trailerLink"
