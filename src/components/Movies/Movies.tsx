@@ -13,7 +13,7 @@ import { DeleteMovieModal } from "../Modals/DeleteMovieModal";
 import { toast } from "react-toastify";
 
 const Movies = () => {
-  const { movies, isLoading } = useMovie();
+  const { movies, isLoading, moviesError } = useMovie();
   const [search, setSearch] = useState("");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [movieId, setMovieId] = useState<number | null>(null);
@@ -115,7 +115,11 @@ const Movies = () => {
             </span>
           </Link>
         </div>
-        {isLoading ? (
+        {moviesError ? (
+          <div className="w-full items-center pt-20 text-center text-red-500">
+            An error occured, please try again later
+          </div>
+        ) : isLoading ? (
           <div className="w-full flex items-center justify-center h-[40vh]">
             <RotatingLines
               visible={true}

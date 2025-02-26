@@ -12,7 +12,7 @@ const MovieDetails = () => {
   const navigate = useNavigate();
   const params = useParams();
   const { id } = params;
-  const { isLoading: loadingMovieDetails, data } = useMovie(Number(id));
+  const { isLoading: loadingMovieDetails, data, error } = useMovie(Number(id));
   const movieDetails = data?.data;
 
   const handleShare = async () => {
@@ -45,7 +45,11 @@ const MovieDetails = () => {
           </div>
           <span className="text-sm">Movie Details</span>
         </div>
-        {loadingMovieDetails ? (
+        {error ? (
+          <div className="w-full items-center pt-20 text-center text-red-500">
+            An error occured, please try again later
+          </div>
+        ) : loadingMovieDetails ? (
           <div className="w-full flex items-center justify-center h-[40vh]">
             <RotatingLines
               visible={true}
