@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"; // Updated import
 import { expect, test, vi } from "vitest";
 import CreateMovie from "../components/CreateMovie/CreateMovie";
-import { MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router"; // Updated import
 import { AppContextsProviders } from "../components/Contexts/app-providers";
 
 const mockNavigate = vi.fn();
@@ -74,6 +74,7 @@ test("submits form and calls createMovie when adding a new movie", async () => {
   fireEvent.change(screen.getByLabelText(/description/i), {
     target: { value: "A great movie." },
   });
+
   const file = new File(["dummy content"], "poster.jpg", {
     type: "image/jpeg",
   });
