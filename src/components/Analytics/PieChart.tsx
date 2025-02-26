@@ -24,6 +24,7 @@ const COLORS = [
   "#A28DFF",
   "#FF5C8D",
 ];
+
 const GenrePopularityChart: React.FC = () => {
   return (
     <div className="w-full h-96 flex flex-col justify-center items-center">
@@ -38,7 +39,7 @@ const GenrePopularityChart: React.FC = () => {
             dataKey="value"
             label
           >
-            {genreData.map((entry, index) => (
+            {genreData.map((_, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
