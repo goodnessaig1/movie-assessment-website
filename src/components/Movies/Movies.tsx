@@ -2,7 +2,6 @@ import { IoAddSharp } from "react-icons/io5";
 import PageLayout from "../Common/PageLayout";
 import { Link } from "react-router";
 import { useMovie } from "../Contexts/movies";
-import { RotatingLines } from "react-loader-spinner";
 import MovieCard from "./MovieCard";
 import { CiSearch } from "react-icons/ci";
 import { useMemo, useState } from "react";
@@ -11,6 +10,7 @@ import { genres } from "../CreateMovie/MovieUploadForm";
 import { useDeleteMovie } from "../hooks/movie.hook";
 import { DeleteMovieModal } from "../Modals/DeleteMovieModal";
 import { toast } from "react-toastify";
+import Loading from "../utils/Loading";
 
 const Movies = () => {
   const { movies, isLoading, moviesError } = useMovie();
@@ -120,16 +120,7 @@ const Movies = () => {
             An error occured, please try again later
           </div>
         ) : isLoading ? (
-          <div className="w-full flex items-center justify-center h-[40vh]">
-            <RotatingLines
-              visible={true}
-              width="60"
-              strokeColor="gray"
-              strokeWidth="5"
-              animationDuration="0.75"
-              ariaLabel="rotating-lines-loading"
-            />
-          </div>
+          <Loading />
         ) : (
           <div className="">
             {sortedMovies.length > 0 ? (

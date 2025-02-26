@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from "react-router";
 import PageLayout from "../../Common/PageLayout";
 import { useMovie } from "../../hooks/movie.hook";
-import { RotatingLines } from "react-loader-spinner";
 import VideoPlayer from "./VideoPlayer";
 import { IoIosArrowForward } from "react-icons/io";
 import { formatDate } from "../../utils/utils";
 import OtherMovies from "./OtherMovies";
 import { FiShare2 } from "react-icons/fi";
+import Loading from "../../utils/Loading";
 
 const MovieDetails = () => {
   const navigate = useNavigate();
@@ -50,16 +50,7 @@ const MovieDetails = () => {
             An error occured, please try again later
           </div>
         ) : loadingMovieDetails ? (
-          <div className="w-full flex items-center justify-center h-[40vh]">
-            <RotatingLines
-              visible={true}
-              width="60"
-              strokeColor="gray"
-              strokeWidth="5"
-              animationDuration="0.75"
-              ariaLabel="rotating-lines-loading"
-            />
-          </div>
+          <Loading />
         ) : (
           <div className="flex flex-col gap-16a lg:gap-24">
             {movieDetails && (
