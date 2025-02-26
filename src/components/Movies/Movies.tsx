@@ -97,7 +97,7 @@ const Movies = () => {
               className="w-[150px] text-gray-600 outline-none px-2 py-2 rounded-lg shadow-[#1018280D] border border-[#D0D5DD]"
               onChange={(e) => setSelectedGenre(e.target.value)}
             >
-              <option value="All">Sort by genre</option>
+              <option value="All">Filter by genre</option>
               {genres.map((genre) => (
                 <option key={genre} value={genre}>
                   {genre}
