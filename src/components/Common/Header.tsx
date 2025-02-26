@@ -12,10 +12,6 @@ export const navLinks = [
     name: "Movies",
     linkTo: "/movies",
   },
-  {
-    name: "Analytics",
-    linkTo: "/analytics",
-  },
 ];
 
 const Header = () => {
