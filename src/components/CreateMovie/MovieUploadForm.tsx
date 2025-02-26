@@ -46,6 +46,9 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
     }
   }, [isMovieCreated, isMovieUpdated]);
 
+  const youtubeRegex =
+    /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[a-zA-Z0-9_-]+/;
+
   const validationSchema = Yup.object({
     title: Yup.string().required("Movie title is required"),
     genre: Yup.string().required("Genre is required"),
@@ -62,7 +65,7 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
       ? Yup.mixed()
       : Yup.mixed().required("Poster image is required"),
     trailerLink: Yup.string()
-      .url("Enter a valid URL")
+      .matches(youtubeRegex, "Enter a valid YouTube link")
       .required("Movie link is required"),
   });
 
