@@ -17,27 +17,43 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   setPosterPreview,
   posterImg,
 }) => {
-  const handleFileChange = (file: File | null) => {
+  // const handleFileChange = (file: File | null) => {
+  //   if (file) {
+  //     setFieldValue(name, file);
+  //     setPosterPreview(URL.createObjectURL(file));
+  //   }
+  // };
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]; // Ensure file exists
+
     if (file) {
       setFieldValue(name, file);
-      setPosterPreview(URL.createObjectURL(file));
+
+      // Check if URL.createObjectURL is available
+      if (typeof URL.createObjectURL === "function") {
+        setPosterPreview(URL.createObjectURL(file));
+      } else {
+        console.error(
+          "URL.createObjectURL is not supported in this environment."
+        );
+      }
     }
   };
 
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const file = event.dataTransfer.files?.[0] || null;
-    handleFileChange(file);
-  };
+  // const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  //   event.preventDefault();
+  //   // const file = event.dataTransfer.files?.[0] || null;
+  //   handleFileChange(file);
+  // };
 
   return (
     <div className="flex flex-col gap-1.5 w-full">
-      <label htmlFor="fileInput">Poster Image:</label>
+      <label htmlFor="poster">Poster Image:</label>
       <div
         className="border-2 w-[230px] h-[250px] border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer transition duration-300 hover:bg-gray-100"
-        onClick={() => document.getElementById("fileInput")?.click()}
+        onClick={() => document.getElementById("poster")?.click()}
         onDragOver={(e) => e.preventDefault()}
-        onDrop={handleDrop}
+        // onDrop={handleDrop}
       >
         {posterPreview || posterImg ? (
           <img
@@ -54,12 +70,13 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       </div>
 
       <input
-        id="fileInput"
+        id="poster"
         type="file"
+        // id="title"
         name={name}
         accept="image/*"
         className="hidden"
-        onChange={(event) => handleFileChange(event.target.files?.[0] || null)}
+        onChange={(event) => handleFileChange(event)}
       />
 
       <ErrorMessage

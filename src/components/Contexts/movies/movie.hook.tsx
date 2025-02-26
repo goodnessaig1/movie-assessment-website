@@ -5,6 +5,7 @@ type MovieState = {
   isLoading: boolean;
   movies: MoviesResponse;
 };
+
 const useMovieHookState = (): MovieState => {
   const { isLoading, data } = useMovies();
 

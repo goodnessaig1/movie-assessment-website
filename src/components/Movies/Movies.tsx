@@ -43,9 +43,9 @@ const Movies = () => {
     setMovieId(null);
   };
 
-  const deleteMovie = () => {
-    if (movieId) {
-      mutate(movieId, {
+  const deleteMovie = (id: number) => {
+    if (id) {
+      mutate(id, {
         onSuccess: () => {
           toast("Successfully deleted!", {
             position: "top-right",
@@ -76,6 +76,7 @@ const Movies = () => {
             deleteMovie={deleteMovie}
             toggle={toggleDelete}
             loading={isPending}
+            id={movieId}
           />
         )}
 

@@ -117,13 +117,20 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
       onSubmit={handleSubmit}
     >
       {({ values, setFieldValue }) => (
-        <Form className="flex flex-col gap-6">
+        <Form
+          role="form"
+          data-testid="create-movie-form"
+          className="flex flex-col gap-6"
+        >
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-1.5 w-full">
-              <label className="text-sm md:text-base">Movie Title*</label>
+              <label htmlFor="title" className="text-sm md:text-base">
+                Movie Title*
+              </label>
               <Field
                 className="border rounded-lg border-gray-200 h-10 px-2 outline-none"
                 type="text"
+                id="title"
                 name="title"
                 placeholder="Enter movie title"
               />
@@ -136,9 +143,12 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
 
             <div className="flex flex-col md:flex-row items-start gap-6 w-full">
               <div className="flex flex-col gap-1.5 w-full md:w-1/2">
-                <label className="text-sm md:text-base">Genre:</label>
+                <label htmlFor="genre" className="text-sm md:text-base">
+                  Genre:
+                </label>
                 <Field
                   as="select"
+                  id="genre"
                   name="genre"
                   className="w-full text-gray-600 outline-none px-2 py-2 rounded-lg shadow-[#1018280D] border border-[#D0D5DD]"
                   value={values?.genre}
@@ -161,9 +171,12 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
               </div>
 
               <div className="flex flex-col gap-1.5 w-full md:w-1/2">
-                <label className="text-sm md:text-base">Release Year:</label>
+                <label htmlFor="releaseYear" className="text-sm md:text-base">
+                  Release Year:
+                </label>
                 <Field
                   as="select"
+                  id="releaseYear"
                   name="releaseYear"
                   className="w-full text-gray-600 outline-none px-2 py-2 rounded-lg shadow-[#1018280D] border border-[#D0D5DD]"
                   value={values?.releaseYear}
@@ -192,9 +205,12 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
 
             <div className="flex flex-col md:flex-row items-start gap-6 w-full">
               <div className="flex flex-col gap-1.5 w-full md:w-1/2">
-                <label className="text-sm md:text-base">Language:</label>
+                <label htmlFor="language" className="text-sm md:text-base">
+                  Language:
+                </label>
                 <Field
                   as="select"
+                  id="language"
                   name="language"
                   className="w-full text-gray-600 outline-none px-2 py-2 rounded-lg shadow-[#1018280D] border border-[#D0D5DD]"
                   value={values?.language}
@@ -221,11 +237,12 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
               </div>
 
               <div className="flex flex-col gap-1.5 w-full md:w-1/2">
-                <label className="text-sm md:text-base">
+                <label htmlFor="rating" className="text-sm md:text-base">
                   Rating (e.g. PG-13, R, G):
                 </label>
                 <Field
                   type="text"
+                  id="rating"
                   className="border rounded-lg border-gray-200 h-10 px-2 outline-none"
                   name="rating"
                 />
@@ -238,9 +255,12 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-sm md:text-base">Trailer Link:</label>
+              <label htmlFor="trailerLink" className="text-sm md:text-base">
+                Trailer Link:
+              </label>
               <Field
                 type="text"
+                id="trailerLink"
                 className="border rounded-lg border-gray-200 h-10 px-2 outline-none"
                 name="trailerLink"
               />
@@ -252,10 +272,13 @@ const MovieUploadForm: React.FC<Props> = ({ movieData }) => {
             </div>
 
             <div className="flex flex-col gap-1.5 w-full">
-              <label className="text-sm md:text-base">Description:</label>
+              <label htmlFor="description" className="text-sm md:text-base">
+                Description:
+              </label>
               <Field
                 as="textarea"
                 rows={3}
+                id="description"
                 placeholder="Enter description..."
                 className="border rounded-lg resize-none border-gray-200 p-2 outline-none"
                 name="description"

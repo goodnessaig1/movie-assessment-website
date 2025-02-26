@@ -2,15 +2,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { RotatingLines } from "react-loader-spinner";
 
 interface DeleteProps {
-  deleteMovie: () => void;
+  deleteMovie: (id: number) => void;
   toggle: () => void;
   loading: boolean;
+  id: number | null;
 }
 
 export const DeleteMovieModal: React.FC<DeleteProps> = ({
   deleteMovie,
   toggle,
   loading,
+  id,
 }) => {
   return (
     <div className="fixed z-4 h-screen top-0 left-0 right-0 bottom-0 md:px-7 md:px-0 flex  items-center justify-center bg-transparent">
@@ -53,7 +55,12 @@ export const DeleteMovieModal: React.FC<DeleteProps> = ({
                 </div>
               ) : (
                 <button
-                  onClick={() => deleteMovie()}
+                  onClick={() => {
+                    if (id) {
+                      deleteMovie(id);
+                    }
+                  }}
+                  data-testid={`delete-button-${id}`}
                   className="bg-red-500 hover:bg-red-600 hover:cursor-pointer transition duration-300 rounded-lg w-1/2 h-12 flex items-center justify-center text-white"
                 >
                   YES

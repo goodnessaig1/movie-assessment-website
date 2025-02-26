@@ -12,16 +12,16 @@ import {
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
-// import { CACHE_TIME, STALE_TIME } from "./components/utils/utils.ts";
+import { CACHE_TIME, STALE_TIME } from "./components/utils/utils.ts";
 
 const queryClient = new QueryClient({
   mutationCache: new MutationCache(),
   queryCache: new QueryCache(),
   defaultOptions: {
-    // queries: {
-    //   staleTime: STALE_TIME,
-    //   gcTime: CACHE_TIME,
-    // },
+    queries: {
+      staleTime: STALE_TIME,
+      gcTime: CACHE_TIME,
+    },
   },
 });
 createRoot(document.getElementById("root")!).render(
